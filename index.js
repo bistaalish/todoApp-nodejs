@@ -1,17 +1,17 @@
-const readline = require('readline'); // Importing realine for input and output
-// Create a readline interface
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+const readline = require('readline');
 
 // Function to greet the user
 function greetUser() {
-    rl.question('Enter your name: ', (name)=>{
-        console.log(`Hello, ${name}! Welcome to the To-Do List App!`);
-        rl.close();
-    });
-}
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
 
-// Call the function to start the interaction
-greetUser();
+  rl.question('Enter your name: ', (name) => {
+    console.log(`Hello, ${name}! Welcome to the To-Do List App!`);
+    rl.close();
+  });
+}
+greetUser()
+
+module.exports = greetUser;
