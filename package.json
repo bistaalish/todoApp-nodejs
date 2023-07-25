@@ -1,0 +1,70 @@
+{
+  "name": "todoapp-nodejs",
+  "version": "1.0.0",
+  "description": "Nodejs based application for todo Application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bistaalish/todoApp-nodejs.git"
+  },
+  "keywords": [
+    "To-Do",
+    "List",
+    "Task",
+    "Manager",
+    "Task",
+    "Tracker",
+    "Task",
+    "Organizer",
+    "Task",
+    "Management",
+    "Node.js",
+    "Command-Line",
+    "Interface",
+    "CLI",
+    "Command-Line",
+    "Application",
+    "Interactive",
+    "User",
+    "Input",
+    "readline",
+    "Command",
+    "Prompt",
+    "Command",
+    "Line",
+    "CRUD",
+    "Operations",
+    "Task",
+    "Tracking",
+    "Task",
+    "Scheduler",
+    "Task",
+    "Planner",
+    "Task",
+    "Reminder",
+    "Task",
+    "List",
+    "Task",
+    "Application",
+    "Task",
+    "App",
+    "Node.js",
+    "Project",
+    "Simple",
+    "Beginner",
+    "Project"
+  ],
+  "author": "Alish Bista",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bistaalish/todoApp-nodejs/issues"
+  },
+  "homepage": "https://github.com/bistaalish/todoApp-nodejs#readme",
+  "dependencies": {
+    "nodemon": "^3.0.1",
+    "readline": "^1.3.0"
+  }
+}
