@@ -4,7 +4,8 @@
   "description": "Nodejs based application for todo Application.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "program": "./node_modules/nodemon/bin/nodemon.js index.js"
   },
   "repository": {
     "type": "git",
