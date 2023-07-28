@@ -11,6 +11,7 @@ const rateLimit = require("express-rate-limit");
 const cookieParser = require("cookie-parser")
 const cookieSession = require("cookie-sessions")
 const config = require('./config/config')
+const taskApi = require("./routes/api")
 // Initializing the express module
 const app = express();
 // Apply rate limiting middleware to all requests
@@ -41,6 +42,8 @@ app.use(morgan("combined", { stream: { write: (message) => logger.info(message) 
 app.get("/",(req,res)=>{
     return res.status(200).json({"test":"successful"})
 })
+// Todo APi
+app.use("/api",taskApi);
 
 // Start the server
 const port = config.PORT || 3000;
