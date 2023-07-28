@@ -39,6 +39,7 @@ app.use(cookieSession({
   // Log HTTP requests using morgan
 app.use(morgan("combined", { stream: { write: (message) => logger.info(message) } }));
 
+// Test route
 app.get("/",(req,res)=>{
     return res.status(200).json({"test":"successful"})
 })

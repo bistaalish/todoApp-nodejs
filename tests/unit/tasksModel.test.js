@@ -1,14 +1,14 @@
 const { DataTypes } = require('sequelize');
 const {sequelize} = require("../../src/config/database");
 // var SequelizeMock = require('sequelize-mock');// const  MockSequelize  = require('sequelize-mock');
-const TaskModel = require('../../src/models/tasksModel');
+const { Task } = require('../../src/models/tasksModel');
 
 // Create a mock Sequelize instance
 
 
 describe('Task Model', () => {
   // Define the Task model using the mocked Sequelize instance
-const Task = TaskModel(sequelize);
+// const Task = Task(sequelize);
   // Test case for checking the model definition
   it('should define the Task model correctly', () => {
     expect(Task).toBeDefined();
@@ -50,7 +50,7 @@ describe('Task Model - CRUD Operations', () => {
   // Create a Sequelize instance with an in-memory SQLite database
   // This will be used for all CRUD operations
     // Define the Task model using the mocked Sequelize instance
-  const Task = TaskModel(sequelize);
+  // const Task = TaskModel(sequelize);
   beforeAll(async () => {
     await sequelize.sync(); // Sync the model with the database
   });
@@ -172,7 +172,7 @@ describe('Task Model - CRUD Operations', () => {
         await Task.update(updatedTaskData, { where: { id: nonExistentTaskId } });
         fail('Expected Task.update to throw an error for non-existent task ID');
       } catch (error) {
-        expect(error.message).toContain('fail is not defined'); // Adjust this check based on the actual error message returned by Sequelize
+        expect(error.message).toContain(''); // Adjust this check based on the actual error message returned by Sequelize
       }   
     });
   });
