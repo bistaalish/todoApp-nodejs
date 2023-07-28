@@ -30,7 +30,6 @@ async function testDatabaseConnection() {
   }
 }
 
-// Export the Sequelize instance and the test function
 module.exports = {
   sequelize,
   testDatabaseConnection,
