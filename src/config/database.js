@@ -1,14 +1,15 @@
 // /config/database.js
 
 const { Sequelize } = require('sequelize');
+const config = require("../config/config")
 require('dotenv').config();
 
 // Replace the values below with your actual MySQL database credentials
-const DB_NAME = process.env.DB_NAME;
-const DB_USER = process.env.DB_USER;
-const DB_PASSWORD = process.env.DB_PASSWORD;
-const DB_HOST = process.env.DB_HOST;
-const DB_PORT = process.env.DB_PORT;
+const DB_NAME = config.DB_NAME;
+const DB_USER = config.DB_USER;
+const DB_PASSWORD = config.DB_PASSWORD;
+const DB_HOST = config.DB_HOST;
+const DB_PORT = config.DB_PORT;
 
 // Create a Sequelize instance to connect to the MySQL database
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {

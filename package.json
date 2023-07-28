@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "program": "./node_modules/nodemon/bin/nodemon.js index.js"
+    "dev": "./node_modules/nodemon/bin/nodemon.js ./src/app.js"
   },
   "repository": {
     "type": "git",
@@ -65,11 +65,20 @@
   },
   "homepage": "https://github.com/bistaalish/todoApp-nodejs#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cookie-sessions": "^0.0.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.8.1",
+    "helmet": "^7.0.0",
+    "joi": "^17.9.2",
+    "morgan": "^1.10.0",
     "mysql2": "^3.5.2",
     "nodemon": "^3.0.1",
     "sequelize": "^6.32.1",
-    "sequelize-test-helpers": "^1.4.3"
+    "sequelize-test-helpers": "^1.4.3",
+    "winston": "^3.10.0"
   },
   "devDependencies": {
     "jest": "^29.6.1",
