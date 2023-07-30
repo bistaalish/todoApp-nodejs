@@ -13,6 +13,8 @@ const cookieParser = require("cookie-parser")
 const cookieSession = require("cookie-sessions")
 const config = require('./config/config')
 const taskApi = require("./routes/api")
+const {checkAuth} = require("./middlewares/checkAuth")
+
 // Initializing the express module
 const app = express();
 // Apply rate limiting middleware to all requests
@@ -47,7 +49,7 @@ app.get("/",(req,res)=>{
 // Mount the auth route at /auth
 app.use('/auth', authRoute);
 // Todo APi
-app.use("/api",taskApi);
+app.use("/api",checkAuth,taskApi);
 
 // Start the server
 const port = config.PORT || 3000;
