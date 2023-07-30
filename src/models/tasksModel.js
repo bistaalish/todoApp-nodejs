@@ -29,6 +29,13 @@ Task.init(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    username:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      },
+    },
   },
   {
     sequelize,

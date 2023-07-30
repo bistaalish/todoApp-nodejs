@@ -94,8 +94,20 @@ const login = async (req, res) => {
   }
 };
 
+const profile = async (req,res) => {
+    try {
+        const userProfile = req.user
+        console.log(userProfile)
+        return res.status(200).json(userProfile);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({error})
+    }
+}
+
 // Export the register and login functions as the module's public API
 module.exports = {
   register,
   login,
+  profile
 };

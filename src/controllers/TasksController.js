@@ -4,13 +4,14 @@ const sequelize = require("../config/database");
 
 
 // Function to add a new task and insert data into the TasksModel
-const addTask = async (title, description, completed = false) => {
+const addTask = async (title, description,username, completed = false) => {
     try {
       // Create a new task with the provided data
       const newTask = await Task.create({
         title,
         description,
         completed,
+        username
       });
   
       return newTask;
@@ -22,9 +23,9 @@ const addTask = async (title, description, completed = false) => {
   };
 
 // Function to get all tasks from the database
-const getAllTasks = async () => {
+const getAllTasks = async (username) => {
     try {
-      const tasks = await Task.findAll();
+      const tasks = await Task.findAll({ where: { username } });
       return tasks;
     } catch (err) {
       // Handle any errors that occurred during the fetch process
@@ -43,9 +44,9 @@ const isTitleExist = async (title) => {
     }
   };
 // Function to get a specific task by ID from the database
-const getTaskById = async (taskId) => {
+const getTaskById = async (taskId,username) => {
     try {
-      const task = await Task.findByPk(taskId);
+      const task = await Task.findAll({ where: { username,id:taskId } });
       if (!task) {
         throw new Error('Task not found');
       }
@@ -119,12 +120,13 @@ const deleteTask = async (id) => {
 
   const AddTask = async (req,res) => {
     try {
+      const username = req.user.username
       const {title,description} = req.body;
       const alreadyExists = await isTitleExist(title);
       if (alreadyExists){
           return res.status(400).json({"Error":"Task Title Already Exists"})
       }
-      const newTask = await addTask(title,description)
+      const newTask = await addTask(title,description,username)
       res.status(200).json(newTask);
   } catch (error) {
       console.error("Error adding task")
@@ -134,7 +136,8 @@ const deleteTask = async (id) => {
 
 const GetTasks = async (req,res) => {
   try {
-    const tasks = await getAllTasks();
+    const username = req.user.username
+    const tasks = await getAllTasks(username);
     if(tasks.length === 0 ){
         return res.status(404).json({"Error":"Error fetching tasks"})
     }
@@ -147,8 +150,14 @@ const GetTasks = async (req,res) => {
 
 const getTaskByID = async (req,res) => {
   try {
+    const username = req.user.username;
     const taskId = req.params.id;
-    const task = await getTaskById(taskId);
+    const task = await getTaskById(taskId,username);
+    
+    // Check if task is empty;
+    if(task.length ===0) {
+      return res.status(401).json({error: "No such task found in your database."})
+    }
     res.status(200).json(task);
 }catch(error){
     res.status(404).json({"error": "Task not found"});
