@@ -1,5 +1,6 @@
 const {Task} = require("../models/tasksModel");
 const sequelize = require("../config/database");
+const { error } = require("winston");
 // const {addTaskSchema} = require("../utils/validation")
 
 
@@ -58,10 +59,14 @@ const getTaskById = async (taskId,username) => {
   };
 
   // Function to update a task based on its id and return the updated data
-const updateTask = async (id, updatedData) => {
+  const updateTask = async (id, updatedData,username) => {
     try {
       // Find the task by id
       const task = await Task.findByPk(id);
+      if(task.username !== username) {
+        throw new Error("This task doesnot belong to you.")
+      }
+      // console.log(task.username)
   
       if (!task) {
         throw new Error('Task not found'); // Task with the given id does not exist
@@ -78,10 +83,13 @@ const updateTask = async (id, updatedData) => {
   };
   
 // Function to mark a task as completed based on its id
-const completeTask = async (id) => {
+const completeTask = async (id,username) => {
     try {
       // Find the task by id
       const task = await Task.findByPk(id);
+      if(task.username !== username) {
+        throw new Error("This task doesnot belong to you.")
+      }
     //   console.log(task)
   
       if (!task) {
@@ -99,10 +107,13 @@ const completeTask = async (id) => {
   };
 
 // Function to delete a task based on its id
-const deleteTask = async (id) => {
+const deleteTask = async (id,username) => {
     try {
       // Find the task by id
       const task = await Task.findByPk(id);
+      if(task.username !== username) {
+        throw new Error("This task doesnot belong to you.")
+      }
   
       if (!task) {
         throw new Error('Task not found'); // Task with the given id does not exist
@@ -166,11 +177,13 @@ const getTaskByID = async (req,res) => {
 const UpdateTask = async (req,res) => {
   try {
     const taskId = parseInt(req.params.id);
+    const username = req.user.username
     const updatedData = req.body;
     // res.status(200).json(updatedData);
-    const updatedTask = await updateTask(taskId,updatedData)
+    const updatedTask = await updateTask(taskId,updatedData,username)
     res.status(200).json(updatedTask);
 } catch (error) {
+    console.error(error)
     return res.status(500).json({"Error":"Task not found"})
 }
 }
@@ -178,7 +191,8 @@ const UpdateTask = async (req,res) => {
 const DeleteTask = async (req,res) => {
   try {
     const taskId = parseInt(req.params.id);
-    const message = await deleteTask(taskId)
+    const username = req.user.username;
+    const message = await deleteTask(taskId,username)
     res.status(200).json({message:message});
    } catch (error){
     return res.status(500).json({"Error":"Failed to delete Task"})
@@ -189,7 +203,8 @@ const completedTask = async (req,res) => {
       // res.status(200).json(req.params.id);
       try {
         const taskId = parseInt(req.params.id);
-        const completedTask = await completeTask(taskId)
+        const username = req.user.username;
+        const completedTask = await completeTask(taskId,username)
         res.status(200).json(completedTask)
     } catch (err) {
         return res.status(500).json({"Error":"Task not found"})
