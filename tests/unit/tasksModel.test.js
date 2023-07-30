@@ -63,6 +63,7 @@ describe('Task Model - CRUD Operations', () => {
       const newTaskData = {
         title: 'Sample Task',
         description: 'This is a sample task.',
+        username: "bistace321"
       };
 
       // Act: Save the new task to the database
@@ -72,6 +73,7 @@ describe('Task Model - CRUD Operations', () => {
       expect(createdTask).toBeTruthy();
       expect(createdTask.title).toBe(newTaskData.title);
       expect(createdTask.description).toBe(newTaskData.description);
+      expect(createdTask.username).toBe(newTaskData.username)
       expect(createdTask.completed).toBe(false); // Default value for completed property
       await createdTask.destroy();
     });
@@ -91,6 +93,7 @@ describe('Task Model - CRUD Operations', () => {
       const newTaskData = {
         title: 'Sample Task',
         description: 'This is a sample task.',
+        username: "test"
       };
       createdTask = await Task.create(newTaskData);
     });
@@ -130,6 +133,7 @@ describe('Task Model - CRUD Operations', () => {
       const newTaskData = {
         title: 'Sample Task',
         description: 'This is a sample task.',
+        username: "test"
       };
       createdTask = await Task.create(newTaskData);
     });
@@ -144,6 +148,7 @@ describe('Task Model - CRUD Operations', () => {
         title: 'Updated Task',
         description: 'This is an updated task.',
         completed: true,
+        username: "test"
       };
 
       // Act: Update the task in the database
@@ -164,6 +169,7 @@ describe('Task Model - CRUD Operations', () => {
         title: 'Updated Task',
         description: 'This is an updated task.',
         completed: true,
+        username: "test"
       };
 
       // Act and Assert: Attempt to update a task with an invalid ID and expect it to throw an error
@@ -186,6 +192,7 @@ describe('Task Model - CRUD Operations', () => {
       const newTaskData = {
         title: 'Sample Task',
         description: 'This is a sample task.',
+        username: "test"
       };
       createdTask = await Task.create(newTaskData);
     });
