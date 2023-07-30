@@ -52,15 +52,15 @@ COOKIE_SECRET = secret123
 ## Log Directory
 LOG_DIR=./logs
 ```
-`DB_NAME`: The name of your MySQL database.
-`DB_USER`: The username for the MySQL database.
-`DB_PASSWORD`: The password for the MySQL database user.
-`DB_HOST`: The host address where the MySQL database is running (e.g., 127.0.0.1 for localhost).
-`DB_PORT`: The port number on which the MySQL database is running (default is 3306).
-`PORT`: The port on which the server will run. You can set it to any available port, e.g., 8080.
-`ALLOWED_ORIGINS`: A comma-separated list of origins that are allowed to access the backend server via CORS. Replace http://example.com with your actual domain(s) or frontend application URL(s).
-`COOKIE_SECRET`: A secret string used for encrypting cookies. Replace secret123 with your preferred secret.
-`LOG_DIR`: The directory where log files will be stored. Replace ./logs with the desired directory path.
+        `DB_NAME`: The name of your MySQL database.
+        `DB_USER`: The username for the MySQL database.
+        `DB_PASSWORD`: The password for the MySQL database user.
+        `DB_HOST`: The host address where the MySQL database is running (e.g., 127.0.0.1 for localhost).
+        `DB_PORT`: The port number on which the MySQL database is running (default is 3306).
+        `PORT`: The port on which the server will run. You can set it to any available port, e.g., 8080.
+        `ALLOWED_ORIGINS`: A comma-separated list of origins that are allowed to access the backend server via CORS. Replace http://example.com with your actual domain(s) or frontend application URL(s).
+        `COOKIE_SECRET`: A secret string used for encrypting cookies. Replace secret123 with your preferred secret.
+        `LOG_DIR`: The directory where log files will be stored. Replace ./logs with the desired directory path.
 
 
 ### Running the Application
