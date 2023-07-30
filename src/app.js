@@ -4,7 +4,8 @@
 require('dotenv').config();
 const express = require("express"); // adding express in nodejs
 const morgan = require("morgan"); // Import the morgan middleware
-const logger = require("./utils/logger"); // Import the logger we created in the previous step
+const logger = require("./utils/logger");
+const authRoute = require('./routes/auth'); // Import the logger we created in the previous step
 const cors = require('cors') // Importing cors
 const helmet = require('helmet');
 const rateLimit = require("express-rate-limit");
@@ -43,6 +44,8 @@ app.use(morgan("combined", { stream: { write: (message) => logger.info(message) 
 app.get("/",(req,res)=>{
     return res.status(200).json({"test":"successful"})
 })
+// Mount the auth route at /auth
+app.use('/auth', authRoute);
 // Todo APi
 app.use("/api",taskApi);
 

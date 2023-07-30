@@ -52,7 +52,7 @@ COOKIE_SECRET = secret123
 ## Log Directory
 LOG_DIR=./logs
 ```
-`DB_NAME`: The name of your MySQL database.
+`DB_NAME  `: The name of your MySQL database.
 
 
 `DB_USER`: The username for the MySQL database.

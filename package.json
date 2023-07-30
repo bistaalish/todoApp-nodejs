@@ -65,6 +65,8 @@
   },
   "homepage": "https://github.com/bistaalish/todoApp-nodejs#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cookie-sessions": "^0.0.2",
     "cors": "^2.8.5",
