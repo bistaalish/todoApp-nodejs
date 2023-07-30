@@ -84,12 +84,18 @@ The server will run on http://localhost:3000 by default. You can change the port
 
 The following API endpoints are available:
 
-    GET /api/tasks: Get a list of all tasks.
-    GET /api/tasks/:id: Get a specific task by its ID.
-    POST /api/tasks: Create a new task.
-    PUT /api/tasks/:id: Update a task by its ID.
-    DELETE /api/tasks/:id: Delete a task by its ID.
-    GET /api/tasks/:id/completed: Marks task as completed
+  
+GET /api/tasks: Get a list of all tasks.
+
+GET /api/tasks/:id: Get a specific task by its ID.
+
+POST /api/tasks: Create a new task.
+
+PUT /api/tasks/:id: Update a task by its ID.
+
+DELETE /api/tasks/:id: Delete a task by its ID.
+
+GET /api/tasks/:id/completed: Marks task as completed
 
 ### Database
  It's recommended to use a proper database (e.g.MySQL, PostgreSQL) to store and manage tasks.
@@ -104,11 +110,16 @@ npm test
 ### Contributing 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
 
-    Fork the repository on GitHub.
-    Create a new branch with a descriptive name: git checkout -b feature/your-feature-name.
-    Make your changes and commit them: git commit -m "Add feature".
-    Push to the branch: git push origin feature/your-feature-name.
-    Open a pull request and provide a detailed description of your changes.
+
+Fork the repository on GitHub.
+
+Create a new branch with a descriptive name: git checkout -b feature/your-feature-name.
+
+Make your changes and commit them: git commit -m "Add feature".
+
+Push to the branch: git push origin feature/your-feature-name.
+
+Open a pull request and provide a detailed description of your changes.
 
 ### License
 This project is licensed under the MIT License - see the LICENSE file for details.
